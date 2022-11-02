@@ -6,7 +6,7 @@
 
 .Form_container > div {
     background-color: rgb(176, 176, 176);
-    width: 30rem;
+    width: 34rem;
 }
 
 .Form_container > div > form > div {
@@ -17,5 +17,7 @@
 }
 
 .Form_container > div > form > div > div:last-child {
-    width: 5rem;
+    width: 10rem;
+    display: flex;
+    justify-content: center;
 }
