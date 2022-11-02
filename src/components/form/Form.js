@@ -1,7 +1,7 @@
 import React from "react";
 import './form.css';
 
-const Form = ({ handleSubmit, isEditingForm, userToEdit }) => {
+const Form = ({ handleSubmit, isEditingForm, userToEdit, changeInputValue }) => {
   return (
     <div className="Form_container">
       <div>
@@ -9,19 +9,39 @@ const Form = ({ handleSubmit, isEditingForm, userToEdit }) => {
           <div>
             <div>
               <b>nombre:</b>
-              <input name="nombre" defaultValue={userToEdit?.nombre}/>
+              {
+                isEditingForm ?
+                  <input name="nombre" value={userToEdit?.nombre || ''} onChange={(e) => changeInputValue(e)}/>
+                  :
+                  <input name="nombre"/>
+              }
             </div>
             <div>
               <b>genero:</b>
-              <input name="genero" defaultValue={userToEdit?.genero}/>
+              {
+                isEditingForm ?
+                  <input name="genero" value={userToEdit?.genero || ''} onChange={(e) => changeInputValue(e)}/>
+                  :
+                  <input name="genero"/>
+              }
             </div>
             <div>
               <b>apellido:</b>
-              <input name="apellido" defaultValue={userToEdit?.apellido}/>
+              {
+                isEditingForm ?
+                  <input name="apellido" value={userToEdit?.apellido || ''} onChange={(e) => changeInputValue(e)}/>
+                  :
+                  <input name="apellido"/>
+              }
             </div>
             <div>
               <b>email:</b>
-              <input name="email" defaultValue={userToEdit?.email}/>
+              {
+                isEditingForm ?
+                  <input name="email" value={userToEdit?.email || ''} onChange={(e) => changeInputValue(e)}/>
+                  :
+                  <input name="email"/>
+              }
             </div>
             <div>
               <button type="submit">

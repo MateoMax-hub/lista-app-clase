@@ -78,6 +78,10 @@ const Home = () => {
     setUserToEdit(editingUser);
   }
 
+  const changeInputValue = (e) => {
+    setUserToEdit({...userToEdit, [e.target.name]: e.target.value});
+  };
+
   return (
     <div className="Home_container">
       <Form handleSubmit={handleSubmit} />
@@ -85,6 +89,7 @@ const Home = () => {
         handleSubmit={handleEdit} 
         isEditingForm={true} 
         userToEdit={userToEdit}
+        changeInputValue={changeInputValue}
       />
       <Table 
         data={usuarios} 
