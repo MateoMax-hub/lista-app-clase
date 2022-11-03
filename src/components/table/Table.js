@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Button, Table as BootstrapTable } from "react-bootstrap";
 import './table.css';
 
 const Table = ({ data, handleDelete, editTrigger }) => {
@@ -10,7 +11,7 @@ const Table = ({ data, handleDelete, editTrigger }) => {
   }, [data])
   
   return (
-    <table>
+    <BootstrapTable striped bordered variant="dark">
       <thead>
         <tr>
           <th>id</th>
@@ -33,16 +34,16 @@ const Table = ({ data, handleDelete, editTrigger }) => {
               <td>{usuario.email}</td>
               <td>{usuario.genero}</td>
               <td>
-                <button onClick={() => handleDelete(usuario.id)}>borrar</button>
+                <Button variant="outline-light" onClick={() => handleDelete(usuario.id)}>borrar</Button>
               </td>
               <td>
-                <button onClick={() => editTrigger(usuario)}>Editar</button>
+                <Button variant="outline-light" onClick={() => editTrigger(usuario)}>Editar</Button>
               </td>
             </tr>
           ))
         }
       </tbody>
-    </table>
+    </BootstrapTable>
   );
 };
 

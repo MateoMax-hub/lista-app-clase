@@ -1,8 +1,10 @@
 import React, { useState } from "react";
-import Form from "../../form/Form";
+import { Button } from "react-bootstrap";
 import Table from "../../table/Table";
-// import Counter from "../../counter/Counter";
 import './home.css';
+import CreateModal from "./modals/CreateModal";
+import EditModal from "./modals/EditModal";
+// import Counter from "../../counter/Counter";
 
 const Home = () => {
   const [usuarios, setUsuarios] = useState([
@@ -36,6 +38,8 @@ const Home = () => {
     },
   ]);
   const [userToEdit, setUserToEdit] = useState({});
+  const [createModalShow, setCreateModalShow] = useState(false);
+  const [editModalShow, setEditModalShow] = useState(false);
 
   const generateId = function () {
     return '_' + Math.random().toString(36).substr(2, 9);
@@ -51,6 +55,7 @@ const Home = () => {
       }
     }
     setUsuarios([...usuarios, usuario])
+    setCreateModalShow(false);
   };
 
   const handleEdit = (e) => {
@@ -67,6 +72,7 @@ const Home = () => {
       return usuario;
     });
     setUsuarios(newUsers);
+    setEditModalShow(false);
   };
 
   const handleDelete = (id) => {
@@ -76,6 +82,7 @@ const Home = () => {
 
   const editTrigger = (editingUser) => {
     setUserToEdit(editingUser);
+    setEditModalShow(true)
   }
 
   const changeInputValue = (e) => {
@@ -84,17 +91,24 @@ const Home = () => {
 
   return (
     <div className="Home_container">
-      <Form handleSubmit={handleSubmit} />
-      <Form 
-        handleSubmit={handleEdit} 
-        isEditingForm={true} 
-        userToEdit={userToEdit}
-        changeInputValue={changeInputValue}
-      />
-      <Table 
+      <Button variant='secondary' onClick={() => setCreateModalShow(true)}>Crear usuario</Button>
+      <Table
         data={usuarios} 
         handleDelete={handleDelete} 
         editTrigger={editTrigger} 
+      />
+
+      <CreateModal 
+        show={createModalShow} 
+        setShow={setCreateModalShow}
+        handleSubmit={handleSubmit}
+      />
+      <EditModal 
+        show={editModalShow}
+        setShow={setEditModalShow}
+        handleEdit={handleEdit}
+        userToEdit={userToEdit}
+        changeInputValue={changeInputValue}
       />
       {/* <Counter /> */}
     </div>
