@@ -6,7 +6,7 @@
 
 .Form_container > div {
     background-color: rgb(176, 176, 176);
-    width: 34rem;
+    width: rem;
 }
 
 .Form_container > div > form > div {
@@ -16,8 +16,12 @@
     flex-wrap: wrap;
 }
 
-.Form_container > div > form > div > div:last-child {
-    width: 10rem;
+.Form_container > form > div > div:last-child {
+    width: 100%;
     display: flex;
     justify-content: center;
+    padding-top: 1rem;
+}
+.Form_container > form > div > div > input {
+    width: 100%;
 }

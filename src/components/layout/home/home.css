@@ -1,5 +1,23 @@
 .Home_container {
     height: calc(100vh - 8rem);
     background-color: rgb(226, 226, 226);
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.Home_container > Button {
+    width: 50%;
+    height: 3rem;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+}
+
+.Table_container {
+    width: 100%;
+    height: 100%;
+    padding: 1rem;
     overflow-y: auto;
 }
