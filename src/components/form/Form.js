@@ -1,3 +1,4 @@
+import { Button } from "react-bootstrap";
 import React from "react";
 import './form.css';
 
@@ -10,45 +11,49 @@ const Form = ({ handleSubmit, isEditingForm, userToEdit, changeInputValue }) => 
             <div>
               <b>nombre:</b>
               {
-                isEditingForm ?
+                isEditingForm ? (
                   <input name="nombre" value={userToEdit?.nombre || ''} onChange={(e) => changeInputValue(e)}/>
-                  :
+                  ):(
                   <input name="nombre"/>
+                  )
               }
             </div>
             <div>
               <b>genero:</b>
               {
-                isEditingForm ?
+                isEditingForm ? (
                   <input name="genero" value={userToEdit?.genero || ''} onChange={(e) => changeInputValue(e)}/>
-                  :
+                  ):(
                   <input name="genero"/>
+                  )
               }
             </div>
             <div>
               <b>apellido:</b>
               {
-                isEditingForm ?
+                isEditingForm ? (
                   <input name="apellido" value={userToEdit?.apellido || ''} onChange={(e) => changeInputValue(e)}/>
-                  :
+                  ):(
                   <input name="apellido"/>
+                  )
               }
             </div>
             <div>
               <b>email:</b>
               {
-                isEditingForm ?
+                isEditingForm ? (
                   <input name="email" value={userToEdit?.email || ''} onChange={(e) => changeInputValue(e)}/>
-                  :
+                  ):(
                   <input name="email"/>
+                  )
               }
             </div>
             <div>
-              <button type="submit">
+              <Button variant="secondary" type="submit">
                 {
                   isEditingForm ? 'Editar usuario' : 'Crear usuario'
                 }
-              </button>
+              </Button>
             </div>
           </div>
         </form>
