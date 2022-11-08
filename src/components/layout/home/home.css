@@ -1,4 +1,5 @@
 .Home_container {
     height: calc(100vh - 8rem);
     background-color: rgb(226, 226, 226);
+    overflow-y: auto;
 }

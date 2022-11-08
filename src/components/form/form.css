@@ -1,0 +1,23 @@
+.Form_container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.Form_container > div {
+    background-color: rgb(176, 176, 176);
+    width: 34rem;
+}
+
+.Form_container > div > form > div {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.Form_container > div > form > div > div:last-child {
+    width: 10rem;
+    display: flex;
+    justify-content: center;
+}
