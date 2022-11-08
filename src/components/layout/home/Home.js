@@ -3,6 +3,7 @@ import { Button } from "react-bootstrap";
 import Table from "../../table/Table";
 import './home.css';
 import CreateModal from "./modals/CreateModal";
+import DeleteModal from "./modals/DeleteModal";
 import EditModal from "./modals/EditModal";
 // import Counter from "../../counter/Counter";
 
@@ -38,8 +39,10 @@ const Home = () => {
     },
   ]);
   const [userToEdit, setUserToEdit] = useState({});
+  const [userToDelete, setUserToDelete] = useState({});
   const [createModalShow, setCreateModalShow] = useState(false);
   const [editModalShow, setEditModalShow] = useState(false);
+  const [deleteConfirmshow, setDeleteConfirmShow] = useState(false);
 
   const generateId = function () {
     return '_' + Math.random().toString(36).substr(2, 9);
@@ -75,9 +78,15 @@ const Home = () => {
     setEditModalShow(false);
   };
 
-  const handleDelete = (id) => {
-    const usuariosFiltrados = usuarios.filter((usuario) => usuario.id !== id);
+  const handleDelete = (user) => {
+    setDeleteConfirmShow(true);
+    setUserToDelete(user);
+  };
+
+  const handleConfirmDelete = () => {
+    const usuariosFiltrados = usuarios.filter((usuario) => usuario.id !== userToDelete.id);
     setUsuarios(usuariosFiltrados);
+    setDeleteConfirmShow(false);
   };
 
   const editTrigger = (editingUser) => {
@@ -109,6 +118,12 @@ const Home = () => {
         handleEdit={handleEdit}
         userToEdit={userToEdit}
         changeInputValue={changeInputValue}
+      />
+      <DeleteModal 
+        show={deleteConfirmshow}
+        setShow={setDeleteConfirmShow}
+        userData={userToDelete}
+        handleConfirmDelete={handleConfirmDelete}
       />
       {/* <Counter /> */}
     </div>

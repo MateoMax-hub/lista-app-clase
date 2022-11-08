@@ -34,7 +34,7 @@ const Table = ({ data, handleDelete, editTrigger }) => {
               <td>{usuario.email}</td>
               <td>{usuario.genero}</td>
               <td>
-                <Button variant="outline-light" onClick={() => handleDelete(usuario.id)}>borrar</Button>
+                <Button variant="outline-light" onClick={() => handleDelete(usuario)}>borrar</Button>
               </td>
               <td>
                 <Button variant="outline-light" onClick={() => editTrigger(usuario)}>Editar</Button>

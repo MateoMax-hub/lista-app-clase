@@ -1,0 +1,11 @@
+.RickAndMortyPage_container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding-top: 1rem;
+}
+
+.RickAndMortyPage_card {
+    width: 18rem;
+    margin-bottom: 1rem;
+}
