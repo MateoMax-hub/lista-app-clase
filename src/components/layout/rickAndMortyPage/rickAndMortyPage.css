@@ -6,6 +6,12 @@
 }
 
 .RickAndMortyPage_card {
-    width: 18rem;
-    margin-bottom: 1rem;
+    width: 100%;
+    margin: 2rem;
+    cursor: pointer;
+    transition: .25s;
+}
+
+.RickAndMortyPage_card:hover {
+    transform: scale(1.05);
 }
