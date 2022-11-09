@@ -8,4 +8,10 @@
 .RickAndMortyPage_card {
     width: 100%;
     margin: 2rem;
+    cursor: pointer;
+    transition: .25s;
+}
+
+.RickAndMortyPage_card:hover {
+    transform: scale(1.05);
 }

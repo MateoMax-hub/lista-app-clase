@@ -15,13 +15,13 @@ const DetailsModal = ({ show, setShow, charToShow}) => {
             <li>Genero: {charToShow.gender}</li>
             <li>Especie y Tipo: {charToShow.species} / { charToShow.type !== '' ? (charToShow.type) : ('-')}</li>
             <li>Estado Actual: {charToShow.status}</li>
-            <li>Origen: {charToShow.origin.name}</li>
-            <li>Ubicacion Actual: {charToShow.location.name}</li>
+            <li>Origen: {charToShow.origin?.name}</li>
+            <li>Ubicacion Actual: {charToShow.location?.name}</li>
           </ul>
         </div>
       </Modal.Body>
       <Modal.Footer>
-        Aparece en {charToShow.episode.length} episodios
+        Aparece en {charToShow.episode?.length} episodios
       </Modal.Footer>
     </Modal>
   );

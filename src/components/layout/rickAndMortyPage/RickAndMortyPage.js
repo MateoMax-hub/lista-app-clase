@@ -8,7 +8,7 @@ const RickAndMortyPage = () => {
   const [charactersData, setCharactersData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [detailsModalShow, setDetailsModalShow] = useState(false);
-  const [charToShow, setCharToShow] = useState({})
+  const [charToShow, setCharToShow] = useState({});
 
   useEffect(() => {
     // fetch('https://rickandmortyapi.com/api/character').then(response => response.json()).then(data => console.log(data))
@@ -27,10 +27,10 @@ const RickAndMortyPage = () => {
     }
   };
 
-  const prueba = (showChar) => {
+  const datailsModalToggle = (showChar) => {
     setCharToShow(showChar);
     setDetailsModalShow(true);
-  }
+  };
 
   return (
     <div className="RickAndMortyPage_container">
@@ -38,13 +38,16 @@ const RickAndMortyPage = () => {
         {
           !isLoading ? (
             charactersData?.map((character) => (
-              <Col className="d-flex justify-content-center" key={character.id}>
+              <Col
+                className="d-flex justify-content-center"
+                key={character.id}
+                onClick={() => datailsModalToggle(character)}
+              >
                 <Card className="RickAndMortyPage_card">
                   <Card.Img variant="top" src={character.image}/>
                   <Card.Title className="text-center my-3">
                     {character.name}
                   </Card.Title>
-                  <a href="#!" className="stretched-link" onClick={() => prueba(character)}></a>
                 </Card>
               </Col>
             ))
