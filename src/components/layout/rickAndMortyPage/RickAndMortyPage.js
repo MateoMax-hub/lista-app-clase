@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Card } from "react-bootstrap";
+import { Card, Row, Col } from "react-bootstrap";
 import './rickAndMortyPage.css';
+import DetailsModal from "../home/modals/DetailsModal";
 
 const RickAndMortyPage = () => {
   const [charactersData, setCharactersData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [detailsModalShow, setDetailsModalShow] = useState(false);
+  const [charToShow, setCharToShow] = useState({})
 
   useEffect(() => {
     // fetch('https://rickandmortyapi.com/api/character').then(response => response.json()).then(data => console.log(data))
@@ -24,22 +27,38 @@ const RickAndMortyPage = () => {
     }
   };
 
+  const prueba = (showChar) => {
+    setCharToShow(showChar);
+    setDetailsModalShow(true);
+  }
+
   return (
     <div className="RickAndMortyPage_container">
-      {
-        !isLoading ? (
-          charactersData?.map((character) => (
-            <Card className="RickAndMortyPage_card" key={character.id}>
-              <Card.Img variant="top" src={character.image}/>
-              <Card.Title>
-                {character.name}
-              </Card.Title>
-            </Card>
-          ))
-        ) : (
-          <>Loading...</>
-        )
-      }
+      <Row xs={1} sm={2} md={3} lg={4} className="g-0">
+        {
+          !isLoading ? (
+            charactersData?.map((character) => (
+              <Col className="d-flex justify-content-center" key={character.id}>
+                <Card className="RickAndMortyPage_card">
+                  <Card.Img variant="top" src={character.image}/>
+                  <Card.Title className="text-center my-3">
+                    {character.name}
+                  </Card.Title>
+                  <a href="#!" className="stretched-link" onClick={() => prueba(character)}></a>
+                </Card>
+              </Col>
+            ))
+            ) : (
+              <>Loading...</>
+          )
+        }
+      </Row>
+
+      <DetailsModal 
+        show={detailsModalShow} 
+        setShow={setDetailsModalShow}
+        charToShow={charToShow}
+      />
     </div>
   );
 };
