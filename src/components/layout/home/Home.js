@@ -5,7 +5,6 @@ import './home.css';
 import CreateModal from "./modals/CreateModal";
 import DeleteModal from "./modals/DeleteModal";
 import EditModal from "./modals/EditModal";
-// import Counter from "../../counter/Counter";
 
 const Home = () => {
   const [usuarios, setUsuarios] = useState([
@@ -125,7 +124,6 @@ const Home = () => {
         userData={userToDelete}
         handleConfirmDelete={handleConfirmDelete}
       />
-      {/* <Counter /> */}
     </div>
   );
 };
