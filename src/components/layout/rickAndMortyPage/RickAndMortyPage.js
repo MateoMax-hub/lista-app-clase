@@ -8,20 +8,19 @@ const RickAndMortyPage = () => {
   const [charactersData, setCharactersData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [detailsModalShow, setDetailsModalShow] = useState(false);
-  const [charToShow, setCharToShow] = useState({});
+  const [id, setId] = useState({});
 
   const [page, setPage] = useState(1);
   const [pagesCount, setPagesCount] = useState(1);
   const [searchFilter, setSearchFilter] = useState('');
     
-    useEffect(() => {
-      handleGetCharacters();
-    }, [page, searchFilter]);
+  useEffect(() => {
+    handleGetCharacters();
+  }, [page, searchFilter]);
     
   const handleGetCharacters = async () => {
     try {
       setIsLoading(true);
-      // fetch('https://rickandmortyapi.com/api/character').then(response => response.json()).then(data => console.log(data))
       const { data } = await axios('https://rickandmortyapi.com/api/character', { params: { page, name: searchFilter } });
       setPagesCount(data.info?.pages);
       setCharactersData(data.results);
@@ -36,8 +35,8 @@ const RickAndMortyPage = () => {
     }
   };
 
-  const datailsModalToggle = (showChar) => {
-    setCharToShow(showChar);
+  const detailsModalToggle = (idChar) => {
+    setId(idChar);
     setDetailsModalShow(true);
   };
 
@@ -66,7 +65,7 @@ const RickAndMortyPage = () => {
                 <Col
                   className="d-flex justify-content-center"
                   key={character.id}
-                  onClick={() => datailsModalToggle(character)}
+                  onClick={() => detailsModalToggle(character.id)}
                 >
                   <Card className="RickAndMortyPage_card">
                     <Card.Img variant="top" src={character.image}/>
@@ -108,7 +107,7 @@ const RickAndMortyPage = () => {
       <DetailsModal 
         show={detailsModalShow} 
         setShow={setDetailsModalShow}
-        charToShow={charToShow}
+        id={id}
       />
     </div>
   );
